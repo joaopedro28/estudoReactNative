@@ -3,15 +3,13 @@ import HomePage from '../screens/HomePage';
 import ReactPage from '../screens/ReactPage';
 import MonografiaPage from '../screens/MonografiaPage';
 
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import  createMaterialBottomTabNavigator from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createMaterialBottomTabNavigator();
 
 
 const BottomNavigation = () => (
-    <NavigationContainer>
 
         <Tab.Navigator
             initialRouteName="Home"
@@ -19,7 +17,6 @@ const BottomNavigation = () => (
             inactiveColor="#00ddff"
             barStyle={{ backgroundColor: '#2b47e5' }}
         >
-
             <Tab.Screen
                 name="Home"
                 component={HomePage}
@@ -53,7 +50,6 @@ const BottomNavigation = () => (
                 }}
             />
         </Tab.Navigator>
-    </NavigationContainer>
 )
 
 export default BottomNavigation;
