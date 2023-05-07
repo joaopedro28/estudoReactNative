@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 
-import jsonData from '../../assets/json/react.json';
-
-const Accordion = () => {
-    const data = jsonData.react;
-
+const Accordion = ({ data, listItemColor, bulletColor, toggleTextColor, contentColor }) => {
+    
     const [accordionData, setAccordionData] = useState(data);
 
     const toggleCollapsed = (id) => {
@@ -21,14 +18,14 @@ const Accordion = () => {
         return accordionData.map((item) => (
             <View key={item.id}>
                 <TouchableOpacity
-                    style={styles.listItem}
+                    style={[styles.listItem, { backgroundColor: listItemColor }]}
                     onPress={() => toggleCollapsed(item.id)}
                 >
-                    <View style={styles.bullet} />
-                    <Text style={styles.toggleText}>{item.title}</Text>
+                    <View style={[styles.bullet, { backgroundColor: bulletColor }]} />
+                    <Text style={[styles.toggleText, { color: toggleTextColor }]}>{item.title}</Text>
                 </TouchableOpacity>
                 <Collapsible collapsed={item.isCollapsed}>
-                    <Text style={styles.content}>{item.content}</Text>
+                    <Text style={[styles.content, { backgroundColor: contentColor }]}>{item.content}</Text>
                 </Collapsible>
             </View>
         ));
@@ -47,7 +44,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingVertical: 12,
-        backgroundColor: '#00ddff',
         marginHorizontal: 12,
         marginVertical: 5,
         borderRadius: 5,
@@ -56,7 +52,6 @@ const styles = StyleSheet.create({
         width: 8,
         height: 8,
         borderRadius: 5,
-        backgroundColor: 'black',
         marginRight: 10,
         marginTop: 3,
     },
@@ -70,8 +65,6 @@ const styles = StyleSheet.create({
         marginRight: 25,
         marginBottom: 10,
         textAlign: 'justify',
-        backgroundColor: '#0414a0',
-        color: '#fff',
         borderRadius: 5,
         padding: 15,
         lineHeight: 20,
