@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, ScrollView, Text, TouchableOpacity, View, Linking } from 'react-native';
 import Collapsible from 'react-native-collapsible';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Accordion = ({ data, listItemColor, bulletColor, toggleTextColor, contentColor }) => {
 
@@ -27,9 +28,12 @@ const Accordion = ({ data, listItemColor, bulletColor, toggleTextColor, contentC
                     <Text style={[styles.toggleText, { color: toggleTextColor }]}>{item.title}</Text>
                 </TouchableOpacity>
                 <Collapsible collapsed={item.isCollapsed}>
-                    <TouchableOpacity onPress={() => handleLinkPress(item.link)} style={styles.button}>
-                        <Text style={styles.buttonText}>Clique aqui e veja arquivo completo</Text>
-                    </TouchableOpacity>
+                    {item.link != null && (
+                        <TouchableOpacity onPress={() => handleLinkPress(item.link)} style={styles.button}>
+                            <MaterialCommunityIcons name="file-document" color="#fff" size={26} backgroundColor="transparent" />
+                            <Text style={styles.buttonText}>Veja arquivo completo</Text>
+                        </TouchableOpacity>
+                    )}
                     <Text style={[styles.content, { backgroundColor: contentColor }]}>{item.content}</Text>
                 </Collapsible>
             </ScrollView>
@@ -61,16 +65,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         elevation: 2,
+        marginHorizontal: 25,
+        marginVertical: 5,
+        flexDirection: 'row',
+        display: 'flex'
+
     },
     buttonText: {
         color: '#FFFFFF',
         fontSize: 16,
         fontWeight: 'bold',
-        marginHorizontal: 12,
     },
     bullet: {
-        width: 8,
-        height: 8,
+        width: 7,
+        height: 7,
         borderRadius: 5,
         marginRight: 10,
         marginTop: 3,

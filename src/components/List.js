@@ -30,21 +30,26 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         paddingVertical: 20,
         paddingHorizontal: 16,
-        marginBottom: 10
+        paddingBottom: 30
     },
     item: {
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#4f4f4f',
         borderRadius: 8,
         marginBottom: 12,
         padding: 16
     },
     itemText: {
         fontSize: 16,
-        color: '#333333'
+        color: '#fff',
+        fontWeight: 600
     },
     subitemText: {
         fontSize: 14,
-        color: '#999999'
+        color: '#fff',
+        marginTop: 10,
+        paddingTop: 10,
+        borderTopWidth:1,
+        borderTopColor:'#727272'
     }
 });
 

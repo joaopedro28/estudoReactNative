@@ -10,7 +10,7 @@ function MonografiaPage() {
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.title}>Monografia Gabriel</Text>
-            <Accordion data={data} listItemColor="#00ddff" bulletColor="#fff" toggleTextColor="#000" contentColor="#fff" />
+            <Accordion data={data} listItemColor="#0c7fcc" bulletColor="#fff" toggleTextColor="#fff" contentColor="#fff" />
         </ScrollView>
     );
 };

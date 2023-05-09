@@ -11,7 +11,7 @@ const ReactPage = () => {
     <View>
       <ScrollView>
         <Text style={styles.title}>React-Native</Text>
-        <Accordion data={data} listItemColor="#00ddff" bulletColor="#fff" toggleTextColor="#000" contentColor="#fff"/>
+        <Accordion data={data} listItemColor="#00ddff" bulletColor="#fff" toggleTextColor="#fff" contentColor="#fff"/>
       </ScrollView>
     </View>
   );
