@@ -12,6 +12,7 @@ import MonografiaPage from './src/screens/MonografiaPage';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import RoutesPage from './src/screens/RoutesPage';
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -20,7 +21,7 @@ export default function App() {
   return (
     <>
       <Header title="App de Estudos" />
-      
+
       <NavigationContainer>
 
         <Tab.Navigator
@@ -43,7 +44,7 @@ export default function App() {
           />
           <Tab.Screen
             name="React"
-            component={ReactPage} 
+            component={ReactPage}
             options={{
               tabBarLabel: 'React',
               tabBarIcon: ({ color }) => (
@@ -53,14 +54,25 @@ export default function App() {
             }} />
           <Tab.Screen
             name="Monografia"
-            component={MonografiaPage} 
+            component={MonografiaPage}
             options={{
               tabBarLabel: 'Monografia',
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons name="book-open" color={color} size={26} backgroundColor="transparent" />
               ),
               tabBarColor: '#2b47e5'
-            }} 
+            }}
+          />
+          <Tab.Screen
+            name="Rotas Front-End"
+            component={RoutesPage}
+            options={{
+              tabBarLabel: 'Rotas Front-End',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="api" color={color} size={26} backgroundColor="transparent" />
+              ),
+              tabBarColor: '#2b47e5'
+            }}
           />
         </Tab.Navigator>
       </NavigationContainer>

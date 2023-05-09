@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, ScrollView, Text, TouchableOpacity, View, Linking } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 
 const Accordion = ({ data, listItemColor, bulletColor, toggleTextColor, contentColor }) => {
-    
+
     const [accordionData, setAccordionData] = useState(data);
 
     const toggleCollapsed = (id) => {
@@ -13,10 +13,12 @@ const Accordion = ({ data, listItemColor, bulletColor, toggleTextColor, contentC
             )
         );
     };
-
+    const handleLinkPress = (link) => {
+        Linking.openURL(link);
+    };
     const renderAccordions = () => {
         return accordionData.map((item) => (
-            <View key={item.id}>
+            <ScrollView key={item.id}>
                 <TouchableOpacity
                     style={[styles.listItem, { backgroundColor: listItemColor }]}
                     onPress={() => toggleCollapsed(item.id)}
@@ -25,16 +27,19 @@ const Accordion = ({ data, listItemColor, bulletColor, toggleTextColor, contentC
                     <Text style={[styles.toggleText, { color: toggleTextColor }]}>{item.title}</Text>
                 </TouchableOpacity>
                 <Collapsible collapsed={item.isCollapsed}>
+                    <TouchableOpacity onPress={() => handleLinkPress(item.link)} style={styles.button}>
+                        <Text style={styles.buttonText}>Clique aqui e veja arquivo completo</Text>
+                    </TouchableOpacity>
                     <Text style={[styles.content, { backgroundColor: contentColor }]}>{item.content}</Text>
                 </Collapsible>
-            </View>
+            </ScrollView>
         ));
     };
 
     return (
-        <View>
+        <ScrollView>
             <ScrollView>{renderAccordions()}</ScrollView>
-        </View>
+        </ScrollView>
     );
 };
 
@@ -47,6 +52,21 @@ const styles = StyleSheet.create({
         marginHorizontal: 12,
         marginVertical: 5,
         borderRadius: 5,
+    },
+    button: {
+        backgroundColor: '#4285F4',
+        borderRadius: 4,
+        paddingVertical: 10,
+        paddingHorizontal: 16,
+        alignItems: 'center',
+        justifyContent: 'center',
+        elevation: 2,
+    },
+    buttonText: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginHorizontal: 12,
     },
     bullet: {
         width: 8,
